@@ -16,7 +16,7 @@ export class CartService {
     const items = [...this.cart.value.items];
 
     // check if item exists in cart already
-    const itemInCart = items.find((_item) => _item.id === item.id);
+    const itemInCart = items.find((_item) => _item._id === item._id);
     if (itemInCart) {
       // increase the quantity if it exists
       itemInCart.quantity += 1;
@@ -69,7 +69,7 @@ export class CartService {
   removeFromCart(item: CartItem, update = true): Array<CartItem> {
     // return a filtered array without the selected cartItem
     const filteredItems = this.cart.value.items.filter(
-      (_item) => _item.id !== item.id
+      (_item) => _item._id !== item._id
     );
 
     // push filtered array to localStorage
@@ -96,7 +96,7 @@ export class CartService {
     let itemForRemoval: CartItem | undefined;
 
     let filteredItems = this.cart.value.items.map((_item) => {
-      if (_item.id === item.id) {
+      if (_item._id === item._id) {
         // decrease quantity by one if the id match
         _item.quantity--;
 
