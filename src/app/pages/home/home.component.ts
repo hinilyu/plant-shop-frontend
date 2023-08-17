@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   rowHeight = ROWS_HEIGHT[this.cols];
   category: string | undefined;
   products: Array<Product> | undefined;
-  sort = "desc";
+  sort = "title";
   count = "12";
   productsSubscription: Subscription | undefined;
 

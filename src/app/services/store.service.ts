@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Product } from "../models/product.model";
 
-const STORE_BASE_URL = "https://fakestoreapi.com";
+const STORE_BASE_URL = "http://localhost:8080/api/v1";
 
 @Injectable({
   providedIn: "root",
@@ -11,21 +11,20 @@ const STORE_BASE_URL = "https://fakestoreapi.com";
 export class StoreService {
   constructor(private httpClient: HttpClient) {}
 
-  // fetch all products from Fake Store API
+  // fetch all products from API
   getAllProducts(
     limit = "12",
-    sort = "Descending",
+    sort = "Title",
     category?: string
   ): Observable<Array<Product>> {
-    if (sort === "Ascending") {
-      sort = "asc";
-    } else if (sort === "Descending") {
-      sort = "desc";
+    if (sort === "Title") {
+      sort = "title";
+    } else if (sort === "Price") {
+      sort = "price";
     }
     return this.httpClient.get<Array<Product>>(
-      `${STORE_BASE_URL}/products${
-        category ? "/category/" + category : ""
-      }?sort=${sort}&limit=${limit}`
+      `${STORE_BASE_URL}/products?category=${category}&sort=${sort}&limit=${limit}`
+      // `${STORE_BASE_URL}/products/static`
     );
   }
 
