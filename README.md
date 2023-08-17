@@ -1,6 +1,7 @@
 # Plant Shop (frontend)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+https://plant-shop-frontend.web.app/home
+https://plant-shop-backend.onrender.com/
 
 ## Development server
 
